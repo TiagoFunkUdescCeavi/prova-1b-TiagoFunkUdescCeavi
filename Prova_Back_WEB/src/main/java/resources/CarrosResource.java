@@ -29,8 +29,8 @@ public class CarrosResource {
     @GET
     @Path( "/modelo/{modelo}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Carro getJson2( @PathParam( "modelo" ) String modelo ) {
-        return (Carro) CarroDao.listar( modelo );
+    public List<Carro> getJson2( @PathParam( "modelo" ) String modelo ) {
+        return CarroDao.listar( Long.parseLong( modelo ) );
     }
 
 

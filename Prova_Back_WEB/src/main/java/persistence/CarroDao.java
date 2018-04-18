@@ -23,12 +23,12 @@ public class CarroDao extends DaoGenerico{
         return em.createQuery("SELECT c FROM Carro c").getResultList();
     }
     
-    public static List<Carro> listar( String modelo){
+    public static List<Carro> listar( Long modelo){
         EntityManagerFactory emf =
                 javax.persistence.Persistence.createEntityManagerFactory(NOME_PU);
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
-        return em.createQuery("SELECT c FROM Carro c WHERE c.modelo = \"" + modelo + "\"" ).getResultList();
+        return em.createNativeQuery("SELECT * FROM carro WHERE carro.modelo_id = " + modelo + ";" ).getResultList();
     }
     
     
